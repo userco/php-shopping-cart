@@ -1,9 +1,13 @@
 <?php
 session_start();
 require_once '../src/libs/helper.php';
-
+if (!isset ($_GET['page']) ) {  
+    $page = 1;  
+} else {  
+    $page = $_GET['page'];  
+}  
 $model = new Book;
-$books = $model->readAll();
+$books = $model->readAll($page);
 ?>
 
 <?php view('header', ['title' => 'Book List']) ?>
@@ -48,4 +52,10 @@ foreach ($books as $book) {
 ?>
 </table>
 
-<?php view('footer')?>
+<?php
+for($page = 1; $page <= $model->getTotalNumberPages(); $page++) {  
+    echo '<a href = "bookList.php?page=' . $page . '">' . $page . ' </a>';  
+}
+
+view('footer');
+?>

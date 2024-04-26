@@ -1,6 +1,7 @@
 <?php
 require '../src/classes/validators/UserValidator.php';
 require '../src/classes/database/User.php';
+require '../src/libs/helper.php';
 
 $errors = [];
 if (isset($_POST['submit'])) {

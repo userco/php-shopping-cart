@@ -36,18 +36,6 @@ class User extends Database {
 		}
 	}
 
-	public function readAll()
-	{
-		$sql = "SELECT * FROM $this->table";
-		$stmt = $this->conn->prepare($sql);
-		$stmt->execute();
-		if ($stmt->rowCount() > 0) {
-			return $stmt->fetchAll();
-		} else {
-			return null;
-		}
-	}
-
 	public function update($id)
 	{
 		$params = [];
