@@ -8,8 +8,8 @@ $books = $model->readAll();
 
 <?php view('header', ['title' => 'Book List']) ?>
 
-<a href="cart.php">Cart</a>
-
+<a href="cart.php">GO to Cart</a>
+<h2> Books list </h2>
 <table>
 	<tr>
 		<td>

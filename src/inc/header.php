@@ -8,7 +8,7 @@
 </head>
 <body>
     <main>
-        <div>
+        <div class="center">
             <?php
             if (session_id()) {
                     echo "Hello " . $_SESSION['user']->name ."!";
