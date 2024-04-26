@@ -4,8 +4,9 @@ require '../src/libs/helper.php';
 $model = new Book;
 ?>
 <?php view('header', ['title' => 'Cart']) ?>
-<a href="booksList.php">GO to Books List</a>
+
 <h2>Cart</h2>
+<a href="booksList.php" class="button">Go to Books List</a>
 <?php 
 if (!empty($_SESSION['cart']))
 {
@@ -42,7 +43,7 @@ foreach ($_SESSION['cart'] as $key => $value) {
 			<?php echo $book->price ?>
 		</td>
 		<td>
-			<a href="removeFromCart.php?id=<?php echo $book->id ?> ">Remove From Cart</a>
+			<a href="removeFromCart.php?id=<?php echo $book->id ?> " class="button">Remove From Cart</a>
 		</td>
 	</tr>
 <?php
@@ -51,7 +52,7 @@ if (!empty($_SESSION['cart']))
 {
 ?>
 </table>
-<a href="buy.php"><h3>Buy</h3></a>
+<a href="buy.php" class="button"><h3>Buy</h3></a>
 <?php 
 }
 view('footer') 

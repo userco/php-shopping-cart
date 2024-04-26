@@ -12,8 +12,9 @@ $books = $model->readAll($page);
 
 <?php view('header', ['title' => 'Book List']) ?>
 
-<a href="cart.php">GO to Cart</a>
 <h2> Books list </h2>
+
+<a href="cart.php" class="button">Go to Cart</a>
 <table>
 	<tr>
 		<td>
@@ -44,7 +45,7 @@ foreach ($books as $book) {
 			<?php echo $book['price'] ?>
 		</td>
 		<td>
-			<a href="addToCart.php?id=<?php echo $book['id'] ?> ">Add to Cart</a>
+			<a href="addToCart.php?id=<?php echo $book['id'] ?> " class="button">Add to Cart</a>
 		</td>
 	</tr>
 <?php
@@ -52,10 +53,26 @@ foreach ($books as $book) {
 ?>
 </table>
 
+<div class="pagination">
 <?php
-for($page = 1; $page <= $model->getTotalNumberPages(); $page++) {  
-    echo '<a href = "bookList.php?page=' . $page . '">' . $page . ' </a>';  
-}
 
-view('footer');
+if($page >= 2){   
+    echo "<a href='bookList.php?page=".($page-1)."'>  Prev </a>";   
+}       
+$pagLink = '';          
+for ($i = 1; $i <= $model->getTotalNumberPages(); $i++) {   
+  if ($i == $page) {   
+      $pagLink .= "<a class = 'active' href='bookList.php?page=".$i."'> ".$i." </a>";   
+  }               
+  else  {   
+      $pagLink .= "<a href='bookList.php?page=".$i."'> ".$i." </a>";     
+  }   
+};     
+echo $pagLink;   
+
+if($page < $model->getTotalNumberPages()){   
+    echo "<a href='bookList.php?page=".($page+1)."'>  Next </a>";   
+}   
 ?>
+</div>
+<?php view('footer');?>

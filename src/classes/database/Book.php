@@ -4,7 +4,7 @@ require_once "User.php";
 
 class Book extends User {
 	protected $table = "books";
-	protected $resultsPerPage = 10;
+	protected $resultsPerPage = 2;
 
 	public function decreaseAmount($id)
 	{
@@ -23,7 +23,7 @@ class Book extends User {
 	{
 		$pageFirstResult = ($page - 1) * $this->resultsPerPage; 
 		$totalNumberPages = $this->getTotalNumberPages(); 
-		$sql = "SELECT * FROM $this->table WHERE amount > 0 LIMIT " . $pageFirstResult . ", " . $totalNumberPages;
+		$sql = "SELECT * FROM $this->table WHERE amount > 0 LIMIT " . $pageFirstResult . ", " . $this->resultsPerPage;
 		$stmt = $this->conn->prepare($sql);
 		$stmt->execute();
 		if ($stmt->rowCount() > 0) {

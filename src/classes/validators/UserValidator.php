@@ -33,7 +33,6 @@ class UserValidator {
 		}
 	}
 
-
 	protected function validateEmail() 
 	{
 		$val = trim($this->data['email']);
@@ -46,11 +45,9 @@ class UserValidator {
 		}
 	}
 
-
 	protected function addError($key, $val) {
 		$this->errors[$key] = $val;
 	}
-
 
 	protected function validatePassword()
 	{
@@ -65,5 +62,4 @@ class UserValidator {
 			}
 		}
 	}
-
 }
