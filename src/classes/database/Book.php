@@ -43,8 +43,8 @@ class Book extends User {
 		}
 		return null;
 	}
-
-    /**
+	
+	/**
      * Gets total number of pages
      * @return int
      * */
