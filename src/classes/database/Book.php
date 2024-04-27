@@ -45,9 +45,9 @@ class Book extends User {
 	}
 
     /**
-     * Gets total number of pages with book records
+     * Gets total number of pages
      * @return int
-	 **/
+     * */
 	public function getTotalNumberPages()
 	{
 		$sql = "SELECT * FROM $this->table WHERE amount > 0";
