@@ -1,11 +1,8 @@
 <?php
 session_start();
 require_once '../src/libs/helper.php';
-if (!isset ($_GET['page']) ) {  
-    $page = 1;  
-} else if (is_numeric($_GET['page'])){  
-    $page = $_GET['page'];  
-}  
+require_once '../src/inc/getPage.php';
+
 $model = new Book;
 $books = $model->readAll($page);
 ?>
@@ -54,25 +51,6 @@ foreach ($books as $book) {
 </table>
 
 <div class="pagination">
-<?php
-
-if($page >= 2){   
-    echo "<a href='bookList.php?page=".($page-1)."'>  Prev </a>";   
-}       
-$pagLink = '';          
-for ($i = 1; $i <= $model->getTotalNumberPages(); $i++) {   
-  if ($i == $page) {   
-      $pagLink .= "<a class = 'active' href='bookList.php?page=".$i."'> ".$i." </a>";   
-  }               
-  else  {   
-      $pagLink .= "<a href='bookList.php?page=".$i."'> ".$i." </a>";     
-  }   
-};     
-echo $pagLink;   
-
-if($page < $model->getTotalNumberPages()){   
-    echo "<a href='bookList.php?page=".($page+1)."'>  Next </a>";   
-}   
-?>
+<?php view('pagination', ['file' => 'booksList.php', 'model' => $model, 'page' => $page]);?>
 </div>
 <?php view('footer');?>
