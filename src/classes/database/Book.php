@@ -16,12 +16,13 @@ class Book extends User {
 	{
 		$amount = (!empty($this->read($id))) ? $this->read($id)->amount : 0;
 		$params = [];
-		if ($amount > 0)
-		$sql = "UPDATE $this->table SET 
-			amount = $amount - 1
-			WHERE id = $id";
+		if ($amount > 0) {
+			$sql = "UPDATE $this->table SET 
+				amount = $amount - 1
+				WHERE id = $id";
 			$stmt = $this->conn->prepare($sql);
-		$stmt->execute();
+			$stmt->execute();
+		}
 	}
 
 	/**
