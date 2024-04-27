@@ -1,7 +1,11 @@
 <?php
 require '../src/classes/database/Book.php';
 
-function view(string $filename, array $data = []): void
+/**
+ * Renders php file
+ * @return void
+ * */
+function view(string $filename, array $data = [])
 {
     // create variables from the associative array
     foreach ($data as $key => $value) {
@@ -10,6 +14,12 @@ function view(string $filename, array $data = []): void
     require_once __DIR__ . '/../inc/' . $filename . '.php';
 }
 
+/**
+ * Check whether user is logged in
+ * @param array $data
+ * @param User $user
+ * @return boolean
+ * */
 function loginCheck($data, $user)
 {
     $object = $user->getBy($data, 'email');
@@ -17,7 +27,11 @@ function loginCheck($data, $user)
     return password_verify( $data['password'], $hashed );   
 }
 
-function getTotalPrice() 
+/**
+ * Calculates total price of books in the shopping cart
+ * @return decimal
+ * */
+function getTotalPrice()
 {
     $model = new Book;
     $price = 0;
@@ -28,7 +42,12 @@ function getTotalPrice()
     return $price;
 }
 
-function insertOrders($orderDetails) 
+/**
+ * Insert bought books in the database - creates orders
+ * @param OrderDetail $orderDetail
+ * @return void
+ * */
+function insertOrders($orderDetail) 
 {
     $model = new Order;
     $userId = $_SESSION['user']->id;
@@ -36,13 +55,18 @@ function insertOrders($orderDetails)
         $data = [
             'book_id' => $key,
             'user_id' => $userId,
-            'order_detail_id' => $orderDetails->id
+            'order_detail_id' => $orderDetail->id
         ];
         decreaseBookAmount($key);
         $model->insert($data);
     }
 }
 
+/**
+ * Decreases the amount of bought book
+ * @param int $bookId
+ * @return void
+ * */
 function decreaseBookAmount($bookId)
 {
    $model = new Book;   

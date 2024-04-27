@@ -11,6 +11,10 @@ class UserValidator {
 		$this->data = $postData;
 	}
 
+	/**
+	 * Validates login user input
+	 * @return array 
+	 * */
 	public function validateForm()
 	{
 		foreach(self::$fields as $field) {
@@ -25,6 +29,10 @@ class UserValidator {
 		return $this->errors;
 	}
 
+	/**
+	 * Validates name from login user input
+	 * @return void
+	 * */
 	protected function validateName() 
 	{
 		$val = trim($this->data['name']);
@@ -33,6 +41,10 @@ class UserValidator {
 		}
 	}
 
+	/**
+	 * Validates email from login user input
+	 * @return void
+	 * */
 	protected function validateEmail() 
 	{
 		$val = trim($this->data['email']);
@@ -45,10 +57,20 @@ class UserValidator {
 		}
 	}
 
+	/**
+	 * Adds validation error to array with errors
+	 * @param string $key
+	 * @param string $val
+	 * @return void
+	 * */
 	protected function addError($key, $val) {
 		$this->errors[$key] = $val;
 	}
 
+	/**
+	 * Validates password from login user input
+	 * @return void
+	 * */
 	protected function validatePassword()
 	{
 		$val = trim($this->data['password']);

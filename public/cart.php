@@ -7,6 +7,7 @@ $model = new Book;
 
 <h2>Cart</h2>
 <a href="booksList.php" class="button">Go to Books List</a>
+<br>
 <?php 
 if (!empty($_SESSION['cart']))
 {

@@ -6,6 +6,12 @@ class Book extends User {
 	protected $table = "books";
 	protected $resultsPerPage = 2;
 
+	/**
+	 *  Decreases book amount after buying
+	 *  @param int $id
+	 *  @return void
+	 * 
+	 * */
 	public function decreaseAmount($id)
 	{
 		$amount = (!empty($this->read($id))) ? $this->read($id)->amount : 0;
@@ -18,7 +24,12 @@ class Book extends User {
 		$stmt->execute();
 	}
 
-
+	/**
+	 *  Gets collection of books with pagination offset and limit
+	 *  @param int $page
+	 *  @return array|null
+	 * 
+	 * */
 	public function readAll($page)
 	{
 		$pageFirstResult = ($page - 1) * $this->resultsPerPage; 
@@ -32,7 +43,10 @@ class Book extends User {
 		return null;
 	}
 
-
+    /**
+     * Gets total number of pages with book records
+     * @return int
+	 **/
 	public function getTotalNumberPages()
 	{
 		$sql = "SELECT * FROM $this->table WHERE amount > 0";

@@ -5,7 +5,11 @@ require_once "Database.php";
 class User extends Database {
 	protected $table = "users";
 
-
+	/**
+	 * Inserts user record into database. Hashes the password
+	 * @param array $data
+	 * @return User 
+	 * */
 	public function insert($data) 
 	{
 		$params = [];
@@ -18,12 +22,18 @@ class User extends Database {
 			}
 			$params[$key] = $value;
 		}
+		//removes last comma
 		$sql = substr($sql, 0, -2);
 		$stmt = $this->conn->prepare($sql);
 		$stmt->execute($params);
 		return $this->read($this->conn->lastInsertId());
 	}
 	
+	/**
+	 * Get user record from database
+	 * @param int $id
+	 * @return User|null 
+	 * */
 	public function read($id)
 	{
 		$sql = "SELECT * FROM $this->table WHERE id=$id";
@@ -36,6 +46,11 @@ class User extends Database {
 		}
 	}
 
+	/**
+	 * Updates user record in database
+	 * @param int $id
+	 * @return User 
+	 * */
 	public function update($id)
 	{
 		$params = [];
@@ -50,6 +65,12 @@ class User extends Database {
 		return $this->read($id);
 	}
 
+	/**
+	 * Get user record from database
+	 * @param array $data
+	 * @param string $property
+	 * @return User|null 
+	 * */
 	public function getBy($data, $property)
 	{
 		$sql = "SELECT * FROM $this->table WHERE $property='". $data[$property] ."'";

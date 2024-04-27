@@ -3,7 +3,7 @@ session_start();
 require_once '../src/libs/helper.php';
 if (!isset ($_GET['page']) ) {  
     $page = 1;  
-} else {  
+} else if (is_numeric($_GET['page'])){  
     $page = $_GET['page'];  
 }  
 $model = new Book;
