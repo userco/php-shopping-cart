@@ -10,7 +10,7 @@
     <main>
         <div class="center">
             <?php
-            if (session_id()) {
+                if (session_id()) {
                     echo "Hello " . $_SESSION['user']->name ."!";
                 }
             ?>
