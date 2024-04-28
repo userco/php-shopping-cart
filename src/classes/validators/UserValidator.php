@@ -14,7 +14,7 @@ class UserValidator {
 	/**
 	 * Validates login user input
 	 * @return array 
-	 * */
+	 */
 	public function validateForm()
 	{
 		foreach(self::$fields as $field) {
@@ -32,7 +32,7 @@ class UserValidator {
 	/**
 	 * Validates name from login user input
 	 * @return void
-	 * */
+	 */
 	protected function validateName() 
 	{
 		$val = trim($this->data['name']);
@@ -44,7 +44,7 @@ class UserValidator {
 	/**
 	 * Validates email from login user input
 	 * @return void
-	 * */
+	 */
 	protected function validateEmail() 
 	{
 		$val = trim($this->data['email']);
@@ -62,7 +62,7 @@ class UserValidator {
 	 * @param string $key
 	 * @param string $val
 	 * @return void
-	 * */
+	 */
 	protected function addError($key, $val) {
 		$this->errors[$key] = $val;
 	}
@@ -70,7 +70,7 @@ class UserValidator {
 	/**
 	 * Validates password from login user input
 	 * @return void
-	 * */
+	 */
 	protected function validatePassword()
 	{
 		$val = trim($this->data['password']);

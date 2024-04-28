@@ -9,7 +9,7 @@ class LoginValidator extends UserValidator {
 	/**
 	 * Validates login user input
 	 * @return array 
-	 * */
+	 */
 	public function validateForm()
 	{
 		foreach(self::$fields as $field) {
@@ -26,7 +26,7 @@ class LoginValidator extends UserValidator {
 	/**
 	 * Validates password from user input
 	 * @return void
-	 * */
+	 */
 	protected function validatePassword()
 	{
 		$val = trim($this->data['password']);

@@ -11,7 +11,7 @@ class Book extends User {
 	 *  @param int $id
 	 *  @return void
 	 * 
-	 * */
+	 */
 	public function decreaseAmount($id)
 	{
 		$amount = (!empty($this->read($id))) ? $this->read($id)->amount : 0;
@@ -30,7 +30,7 @@ class Book extends User {
 	 *  @param int $page
 	 *  @return array|null
 	 * 
-	 * */
+	 */
 	public function readAll($page)
 	{
 		$pageFirstResult = ($page - 1) * $this->resultsPerPage; 
@@ -47,7 +47,7 @@ class Book extends User {
 	/**
 	 * Gets total number of pages
 	 * @return int
-	 **/
+	 */
 	public function getTotalNumberPages()
 	{
 		$sql = "SELECT * FROM $this->table WHERE amount > 0";

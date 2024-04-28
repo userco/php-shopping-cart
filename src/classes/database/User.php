@@ -9,7 +9,7 @@ class User extends Database {
 	 * Inserts user record into database. Hashes the password
 	 * @param array $data
 	 * @return User 
-	 * */
+	 */
 	public function insert($data) 
 	{
 		$params = [];
@@ -33,7 +33,7 @@ class User extends Database {
 	 * Get user record from database
 	 * @param int $id
 	 * @return User|null 
-	 * */
+	 */
 	public function read($id)
 	{
 		$sql = "SELECT * FROM $this->table WHERE id=$id";
@@ -50,7 +50,7 @@ class User extends Database {
 	 * Updates user record in database
 	 * @param int $id
 	 * @return User 
-	 * */
+	 */
 	public function update($id)
 	{
 		$params = [];
@@ -70,7 +70,7 @@ class User extends Database {
 	 * @param array $data
 	 * @param string $property
 	 * @return User|null 
-	 * */
+	 */
 	public function getBy($data, $property)
 	{
 		$sql = "SELECT * FROM $this->table WHERE $property='". $data[$property] ."'";

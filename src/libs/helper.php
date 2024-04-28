@@ -4,7 +4,7 @@ require '../src/classes/database/Book.php';
 /**
  * Renders php file
  * @return void
- * */
+ */
 function view(string $filename, array $data = [])
 {
     // create variables from the associative array
@@ -19,7 +19,7 @@ function view(string $filename, array $data = [])
  * @param array $data
  * @param User $user
  * @return boolean
- * */
+ */
 function loginCheck($data, $user)
 {
     $object = $user->getBy($data, 'email');
@@ -30,7 +30,7 @@ function loginCheck($data, $user)
 /**
  * Calculates total price of books in the shopping cart
  * @return decimal
- * */
+ */
 function getTotalPrice()
 {
     $model = new Book;
@@ -46,7 +46,7 @@ function getTotalPrice()
  * Insert bought books in the database - creates orders
  * @param OrderDetail $orderDetail
  * @return void
- * */
+ */
 function insertOrders($orderDetail) 
 {
     $model = new Order;
@@ -66,7 +66,7 @@ function insertOrders($orderDetail)
  * Decreases the amount of bought book
  * @param int $bookId
  * @return void
- * */
+ */
 function decreaseBookAmount($bookId)
 {
    $model = new Book;   
